@@ -1,13 +1,12 @@
 package tn.esprit.baligh_laouini_4gamix1.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,8 +18,16 @@ import lombok.AllArgsConstructor;
 public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idFoyer;
-    private String nameFoyer;
-    private long capaciteFoyer;
+    private Long idFoyer;
+
+    private String nomFoyer;
+    private Long capaciteFoyer;
+
+    @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
+    private List<Bloc> blocs;
+
+    @ManyToOne
+    @JoinColumn(name = "universite_id")
+    private Universite universite;
 
 }
