@@ -1,33 +1,33 @@
 package tn.esprit.baligh_laouini_4gamix1.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+@Builder
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 
 public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFoyer;
+     Long idFoyer;
 
-    private String nomFoyer;
-    private Long capaciteFoyer;
+     String nomFoyer;
+     Long capaciteFoyer;
 
     @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
-    private List<Bloc> blocs;
+     List<Bloc> blocs;
 
-    @ManyToOne
-    @JoinColumn(name = "universite_id")
-    private Universite universite;
+    @OneToOne
+
+     Universite universite;
 
 }

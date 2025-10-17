@@ -2,36 +2,36 @@ package tn.esprit.baligh_laouini_4gamix1.Entities;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+@Builder
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEtudiant;
+     Long idEtudiant;
 
-    private String nomEt;
-    private String prenomEt;
-    private Long cin;
-    private String ecole;
+     String nomEt;
+     String prenomEt;
+     Long cin;
+     String ecole;
 
     @Temporal(TemporalType.DATE)
-    private Date dateNaissance;
+     Date dateNaissance;
 
     @ManyToMany(mappedBy = "etudiants")
-    private List<Reservation> reservations;
+     List<Reservation> reservations;
 
 }

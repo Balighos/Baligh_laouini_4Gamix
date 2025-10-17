@@ -1,34 +1,34 @@
 package tn.esprit.baligh_laouini_4gamix1.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 import java.util.List;
+@Builder
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idReservation;
+     long idReservation;
 
     @Temporal(TemporalType.DATE)
-    private Date anneeUniversitaire;
+     Date anneeUniversitaire;
 
-    private boolean estValide;
+     boolean estValide;
 
     @ManyToOne
     @JoinColumn(name = "chambre_id")
-    private Chambre chambre;
+     Chambre chambre;
 
     @ManyToMany
     @JoinTable(
@@ -36,6 +36,6 @@ public class Reservation {
             joinColumns = @JoinColumn(name = "reservation_id"),
             inverseJoinColumns = @JoinColumn(name = "etudiant_id")
     )
-    private List<Etudiant> etudiants;
+     List<Etudiant> etudiants;
 
 }

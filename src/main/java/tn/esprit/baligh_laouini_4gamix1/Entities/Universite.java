@@ -1,29 +1,29 @@
 package tn.esprit.baligh_laouini_4gamix1.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+@Builder
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 
 public class Universite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUniversite;
+     Long idUniversite;
 
-    private String nomUniversite;
+     String nomUniversite;
 
-    private String address;
+     String address;
 
-    @OneToMany(mappedBy = "universite", cascade = CascadeType.ALL)
-    private List<Foyer> foyers;
+    @OneToOne(mappedBy = "universite")
+     Foyer foyers;
 }
