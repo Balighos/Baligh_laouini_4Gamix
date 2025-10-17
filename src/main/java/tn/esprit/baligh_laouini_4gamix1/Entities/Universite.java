@@ -22,6 +22,8 @@ public class Universite {
 
     private String nomUniversite;
 
+    private String address;
+
     @OneToMany(mappedBy = "universite", cascade = CascadeType.ALL)
     private List<Foyer> foyers;
 }

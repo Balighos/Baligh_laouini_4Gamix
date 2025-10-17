@@ -20,23 +20,18 @@ import java.util.List;
 
 public class Etudiant {
     @Id
-    private String idReservation;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEtudiant;
+
+    private String nomEt;
+    private String prenomEt;
+    private Long cin;
+    private String ecole;
 
     @Temporal(TemporalType.DATE)
-    private Date anneeUniversitaire;
+    private Date dateNaissance;
 
-    private boolean estValide;
-
-    @ManyToOne
-    @JoinColumn(name = "chambre_id")
-    private Chambre chambre;
-
-    @ManyToMany
-    @JoinTable(
-            name = "reservation_etudiant",
-            joinColumns = @JoinColumn(name = "reservation_id"),
-            inverseJoinColumns = @JoinColumn(name = "etudiant_id")
-    )
-    private List<Etudiant> etudiants;
+    @ManyToMany(mappedBy = "etudiants")
+    private List<Reservation> reservations;
 
 }
