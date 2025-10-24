@@ -27,15 +27,9 @@ public class Reservation {
      boolean estValide;
 
     @ManyToOne
-    @JoinColumn(name = "chambre_id")
      Chambre chambre;
 
     @ManyToMany
-    @JoinTable(
-            name = "reservation_etudiant",
-            joinColumns = @JoinColumn(name = "reservation_id"),
-            inverseJoinColumns = @JoinColumn(name = "etudiant_id")
-    )
      List<Etudiant> etudiants;
 
 }

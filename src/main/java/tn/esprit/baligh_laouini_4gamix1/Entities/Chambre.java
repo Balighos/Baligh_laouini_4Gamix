@@ -26,9 +26,8 @@ public class Chambre {
     TypeChambre typeC;
 
     @ManyToOne
-    @JoinColumn(name = "bloc_id")
     Bloc bloc;
 
-    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     List<Reservation> reservations;
 }
