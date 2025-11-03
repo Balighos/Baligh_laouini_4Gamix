@@ -37,7 +37,7 @@ public class EtudiantServiceImpl implements  EtudiantService{
     }
 
     @Override
-    public List<Etudiant> getEtudiant() {
+    public List<Etudiant> getEtudiants() {
         return etudiantRepository.findAll();
     }
 }
