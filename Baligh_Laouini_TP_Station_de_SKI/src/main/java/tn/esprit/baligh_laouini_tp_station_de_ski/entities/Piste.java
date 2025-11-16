@@ -20,7 +20,11 @@ public class Piste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long numPiste;
     String nomPiste;
+
+
+    @Enumerated(EnumType.STRING)
     Couleur couleur;
+
     int longueur;
     int pente;
 
